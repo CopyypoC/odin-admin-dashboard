@@ -40,9 +40,10 @@ body {
     --header-align-left: 2rem;
     --header-align-right: 4rem;
     --drop-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
+    --sidebar-align-left: 1rem;
 }
 
-/* Page Layout */
+/* Page Layout and General Styles */
 .container {
     display: grid;
     grid-template: 
@@ -67,16 +68,21 @@ body {
     grid-area: content;
 }
 
+.pfp {
+    border-radius: 50%;
+    min-width: 60px;
+}
+
+.icon {
+    min-width: 2rem;
+}
+
 /* Header */
 .header {
     position: relative;
     grid-template: 1fr 1.5fr / 1fr .5fr;
     padding: 0.5rem 4.5rem 0 3rem;
     box-shadow: var(--drop-shadow);
-}
-
-.icon img{
-    border-radius: 50%;
 }
 
 .header > * {
@@ -150,7 +156,83 @@ body {
 
 /* Sidebar */
 .sidebar {
-    background-color: rgba(24,146,211,255)
+    background-color: rgba(24,146,211,255);
+    grid-template-rows: 1fr 10fr;
+    height: 100vh;
+    gap: 2rem 0;
+}
+
+.sidebar > * {
+    display: grid;
+    color: white;
+}
+
+.dashboard {
+    grid-template-columns: 25% 1fr;
+    align-items: center;
+    padding-left: var(--sidebar-align-left);
+}
+
+.dashboard p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+
+.dashboard img {
+    fill: white;
+    padding-left: .7rem;
+    width: auto;
+    max-width: 60px;
+}
+
+.nav-links {
+    grid-template-rows: repeat(11, 1fr);
+    height: 60%;
+    align-items: center;
+    grid-template-areas: 
+        "dashboard"
+        "home"
+        "profile"
+        "messages"
+        "tasks"
+        "communities"
+        "."
+        "."
+        "settings"
+        "support"
+        "privacy";
+    gap: .5rem 0;
+    padding-left: var(--sidebar-align-left);
+}
+
+.settings {
+    grid-area: settings;
+}
+
+.support {
+    grid-area: support;
+}
+
+.privacy {
+    grid-area: privacy;
+}
+
+.nav-links > * {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    align-items: center;
+}
+
+.nav-links li div {
+    place-self: center;
+}
+
+.nav-links li a {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
 }
 
 /* Content */
