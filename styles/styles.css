@@ -41,6 +41,8 @@ body {
     --header-align-right: 4rem;
     --drop-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
     --sidebar-align-left: 1rem;
+    --heading-row-size: 4rem;
+    --card-radius: 8px;
 }
 
 /* Page Layout and General Styles */
@@ -79,7 +81,9 @@ body {
 
 /* Header */
 .header {
-    position: relative;
+    position: sticky;
+    top:0;
+    background-color: white;
     grid-template: 1fr 1.5fr / 1fr .5fr;
     padding: 0.5rem 4.5rem 0 3rem;
     box-shadow: var(--drop-shadow);
@@ -156,6 +160,8 @@ body {
 
 /* Sidebar */
 .sidebar {
+    position: sticky;
+    top:0;
     background-color: rgba(24,146,211,255);
     grid-template-rows: 1fr 10fr;
     height: 100vh;
@@ -202,7 +208,7 @@ body {
         "settings"
         "support"
         "privacy";
-    gap: .5rem 0;
+    gap: 20px 0;
     padding-left: var(--sidebar-align-left);
 }
 
@@ -237,5 +243,63 @@ body {
 
 /* Content */
 .content {
+    grid-template: "projects info" 1fr / 2.5fr 1fr;
     background-color: rgba(225,232,240,255);
+    max-height: 100%;
+    padding: 1.8rem 2rem 3.5rem 1.5rem;
+}
+
+.content h1 {
+    padding: 1rem;
+}
+
+.projects {
+    grid-area: projects;
+}
+
+.info {
+    display: block;
+    grid-area: info;
+}
+
+.projects h1 {
+    grid-row: 1 / -1;
+}
+
+.project-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+.project-card {
+    box-shadow: var(--drop-shadow);
+    border-radius: var(--card-radius);
+    border-left: var(--card-radius) solid rgba(240,180,41,255);
+    background-color: white;
+    padding: 2rem;
+}
+
+.announcements > *:not(h1),
+.trending > *:not(h1) {
+    background-color: white;
+}
+
+.announcements-card-container,
+.trending-card-container {
+    display: grid;
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    box-shadow: var(--drop-shadow);
+}
+
+.announcement-card {
+    padding: 1rem 0;
+    border-top: 1px solid #ccc;
+}
+
+.announcement-card:nth-child(1) {
+    padding-top: 0;
+    border-top: 0;
 }
